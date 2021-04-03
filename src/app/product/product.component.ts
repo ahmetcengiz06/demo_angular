@@ -19,10 +19,11 @@ export class ProductComponent implements OnInit {
   filterText ="";
   sum:number=this.calcService.add(1,2,3,4);
   products: Product[];
-  path="http://localhost:3000/products";
+  path="https://raw.githubusercontent.com/ahmetcengiz06/shop.github.io/main/shop.json";
   ngOnInit(): void {
-    this.http.get<Product[]>(this.path).subscribe(data=>{
-      this.products=data;
+    this.http.get<any>(this.path).subscribe(data=>{
+      let _products:Product[]=data.products;
+      this.products=_products;
     });
   }
   addToCart(product){
