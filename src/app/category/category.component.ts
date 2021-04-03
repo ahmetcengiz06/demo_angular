@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from './category';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-category',
@@ -7,29 +8,14 @@ import { Category } from './category';
   styleUrls: ['./category.component.css'],
 })
 export class CategoryComponent implements OnInit {
-  constructor() {}
+  constructor(private http:HttpClient) {}
   title = 'Kategori Listesi';
-  categories: Category[] = [
-    {
-      id: 1,
-      name: 'Elektronik',
-    },
-    {
-      id: 2,
-      name: 'Bilgisayar',
-    },
-    {
-      id: 3,
-      name: 'İletişim',
-    },
-    {
-      id: 4,
-      name: 'Müzik',
-    },
-    {
-      id: 5,
-      name: 'İçecek',
-    },
-  ];
-  ngOnInit(): void {}
+  path="https://raw.githubusercontent.com/ahmetcengiz06/shop.github.io/main/shop.json";
+  categories: Category[];
+  ngOnInit(): void {
+    this.http.get<any>(this.path).subscribe(data=>{
+      let _categories:Category[]=data.categories;
+      this.categories=_categories
+    });
+  }
 }
