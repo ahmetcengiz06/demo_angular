@@ -9,7 +9,6 @@ import { NavComponent } from './nav/nav.component';
 import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './product/product.component';
 import { ProductSearchPipe } from './product/product-search.pipe';
-import { FooterComponent } from './footer/footer.component';
 import { AlertifyService } from './services/alertify.service';
 
 
@@ -19,8 +18,7 @@ import { AlertifyService } from './services/alertify.service';
     NavComponent,
     CategoryComponent,
     ProductComponent,
-    ProductSearchPipe,
-    FooterComponent
+    ProductSearchPipe
   ],
   imports: [
     BrowserModule,
